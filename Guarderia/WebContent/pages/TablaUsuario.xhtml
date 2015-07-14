@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>....:::: Usuarios ::::....</title>
+</h:head>
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="datos 3">
+		<h:form id="formularioDetalleUsuario">
+
+			<p:panel id="panel" header="Digite los datos para el nuevo usuario"
+				style="margin-bottom:20px">
+
+
+				<p:growl id="messages" showDetail="true" autoUpdate="false"
+					closable="true" />
+				<h:panelGrid id="detalleUsuario" columns="2" cellpadding="5">
+
+					<h:outputLabel value="Cedula" />
+					<p:inputText id="cedula" value="#{usuarioController.cedula}"
+						required="true"
+						requiredMessage="La cedula del usuario es requerida" />
+					<h:outputLabel value="Nombres" />
+					<p:inputText id="nombres" value="#{usuarioController.nombres}"
+						required="true"
+						requiredMessage="El nombre del usuario es requerido" />
+
+					<h:outputLabel value="Apellidos" />
+					<p:inputText id="apellidos" value="#{usuarioController.apellidos}"
+						required="true"
+						requiredMessage="El apellido del usuario requerido" />
+
+
+					<h:outputLabel value="Usuario" />
+					<p:inputText id="usuario" value="#{usuarioController.usuario}"
+						required="true" requiredMessage="El usuario es requerido" />
+
+
+
+
+					<h:outputLabel for="pwd1" value="Contraseña " />
+					<p:password id="pwd1" value="#{usuarioController.clave}"
+						match="pwd2" label="Password 1" required="true" />
+
+					<h:outputLabel for="pwd2" value=" " />
+					<p:password id="pwd2" value="#{usuarioController.clave}"
+						label="Password 2" required="true" />
+
+
+
+
+					<h:outputLabel value="Estado" />
+					<h:selectOneMenu id="estado" value="#{usuarioController.estado}"
+						required="true" label="Estado">
+						<f:selectItem itemLabel="Seleccione.." itemValue=""
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Activo" itemValue="1" />
+						<f:selectItem itemLabel="Inactivo" itemValue="2" />
+					</h:selectOneMenu>
+
+
+					<center>
+						<h:commandButton value="Insertar"
+							actionListener="#{usuarioController.guardarUsuario}">
+						</h:commandButton>
+					</center>
+
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="datos 2">
+		<h:form id="formularioResultadoUsuario">
+
+			<p:panel id="panel" header="DETALLE DE USUARIOS"
+				style="margin-bottom:20px">
+
+				<p:panelGrid columns="7" cellpadding="5">
+					<p:dataTable var="usuario"
+						value="#{usuarioController.listaUsuarios}" rows="5"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5" id="tablaResultadoUsuarios"
+						style="font-size:14px;" selectionMode="single"
+						selection="#{usuarioController.usuario}" rowKey="#{usuario}">
+
+						<p:ajax event="rowSelect"
+							update=":formularioDetalleUsuario:detalleUsuario" />
+
+						<p:column headerText="Cedula">
+							<h:outputText value="#{usuario.cedula}" />
+						</p:column>
+
+
+						<p:column headerText="Nombres">
+							<h:outputText value="#{usuario.nombres}" />
+						</p:column>
+
+						<p:column headerText="Apellidos">
+							<h:outputText value="#{usuario.apellidos}" />
+						</p:column>
+
+
+
+						<p:column headerText="Usuario ">
+							<h:outputText value="#{usuario.usuario}" />
+						</p:column>
+
+
+						<p:column headerText="Clave">
+							<h:outputText type="hidden" value="*****" />
+						</p:column>
+
+
+						<p:column headerText="Estado">
+							<h:outputText value="#{usuario.estado}" />
+						</p:column>
+
+					</p:dataTable>
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+	<h:head>
+		<h:outputStylesheet name="estilos.css" library="css"></h:outputStylesheet>
+	</h:head>
+	<h:body>
+		<div class="container">
+			<div>
+				<div class="logo">
+					<p:graphicImage value="/images/logo.png" width="100%" height="50"
+						align="left" id="logo" style="background-color: #F2F2F2;" />
+				</div>
+				<div class="menuhorizonte">
+
+					<h:form>
+						<p:growl id="messages" />
+						<center>
+							<p:graphicImage value="/images/logor.png" width="50%" height="50"
+								align="center" id="logo" style="background-color: #F2F2F2;" />
+						</center>
+					</h:form>
+
+
+				</div>
+
+			</div>
+
+			<div class="menulateral">
+				<div class="sidebar1">
+					<h:form>
+
+						<p:menubar>
+							<p:separator />
+							<p:menuitem value=" Admin Usuarios"
+								outcome="ActualizarUsuario.xhtml" icon="ui-icon-alert" />
+							<p:separator />
+							<p:menuitem value=" Insertar/Eliminar"
+								outcome="TablaProductos.xhtml" icon="ui-icon-newwin" />
+							<p:separator />
+							<p:menuitem value="Actualizar Pdto" outcome="Actualizar.xhtml"
+								icon="ui-icon-disk" />
+							<p:separator />
+							<p:menuitem value="Ingreso" outcome="Ingreso.xhtml"
+								icon="ui-icon-plus" />
+							<p:separator />
+							<p:menuitem value="Salida" outcome="Salida.xhtml"
+								icon="ui-icon-minus" />
+							<p:separator />
+							<p:menuitem value="Log Out" outcome="login.xhtml"
+								icon="ui-icon-locked" />
+							<p:separator />
+						</p:menubar>
+
+					</h:form>
+				</div>
+			</div>
+			<div id="cajon2" align="center">
+				<ui:insert name="datos 2"> Detalle 1</ui:insert>
+			</div>
+			<div id="cajon3" align="center">
+				<ui:insert name="datos 3"> Detalle 2</ui:insert>
+			</div>
+			<p:stack icon="/images/stack.png" expanded="true">
+				<p:menuitem value="Navegar" icon="/images/dock/global.png"
+					url="http://www.google.com" />
+				<p:menuitem value="Email" icon="/images/dock/mail.png"
+					url="http://www.gmal.com" />
+				<p:menuitem value="Video" icon="/images/dock/play.png"
+					url="http://www.youtube.com" />
+				<p:menuitem value="Salir" icon="/images/dock/locked.png"
+					outcome="login" />
+			</p:stack>
+
+		</div>
+	</h:body>
+</ui:composition>
+</html>

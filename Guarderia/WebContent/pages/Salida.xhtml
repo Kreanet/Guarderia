@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>....:::: Actualizar Productos !! ::::....</title>
+</h:head>
+<ui:composition template="template.xhtml">
+
+
+
+	<ui:define name="datos 2">
+		<div align="center">
+			<h:form id="formularioDetallePruducto">
+
+				<p:panel id="panel" header="DETALLE DEL PRODUCTOS"
+					style="margin-bottom:5px">
+					<p:panelGrid columns="2" id="detalleProducto">
+						<f:facet name="header">
+						Gestión Productos
+					</f:facet>
+
+						<h:outputLabel for="ideproducto" value="Codigo: "></h:outputLabel>
+						<p:inputText id="ideproducto" type="hidden"
+							value="#{productoController.producto.ideproducto}"></p:inputText>
+
+						<h:outputLabel for="desproducto" value="Descripcion: "></h:outputLabel>
+						<p:inputText id="desproducto"
+							value="#{productoController.producto.desproducto}"></p:inputText>
+
+						<h:outputLabel for="cantidad" value="Cantidad:"></h:outputLabel>
+						<p:inputText id="cantidad" type="hidden"
+							value="#{productoController.producto.cantidad}">
+
+						</p:inputText>
+
+						<h:outputLabel for="salida" value="Cantidad a Retirar"></h:outputLabel>
+						<p:inputText id="salida" value="#{productoController.operador}">
+
+						</p:inputText>
+
+						<h:outputLabel for="valor" value="Valor: "></h:outputLabel>
+						<p:inputText id="valor"
+							value="#{productoController.producto.valor}"></p:inputText>
+
+						<h:outputLabel for="ubicacion" value="Ubicacion: "></h:outputLabel>
+						<p:inputText id="ubicacion"
+							value="#{productoController.producto.ubicacion}"></p:inputText>
+
+						<h:outputLabel for="estado" value="Estado: "></h:outputLabel>
+						<p:inputText id="estado"
+							value="#{productoController.producto.estado}"></p:inputText>
+
+
+						<h:outputLabel value="Proveedor" />
+						<p:selectOneMenu value="#{productoController.proveedor.nit}"
+							title="Seleccione un proveedor" id="selProveedor"
+							label="Proveedor">
+
+							<f:selectItems value="#{productoController.listaProveedor}"
+								var="proveedor"
+								itemLabel="#{proveedor.nit} -  #{proveedor.nombre}"
+								itemValue="#{proveedor.nit}">
+							</f:selectItems>
+						</p:selectOneMenu>
+
+
+
+						<f:facet name="footer">
+							<center>
+								<h:commandButton value="Realizar Salida"
+									actionListener="#{productoController.doresta}">
+								</h:commandButton>
+							</center>
+						</f:facet>
+
+					</p:panelGrid>
+				</p:panel>
+			</h:form>
+
+		</div>
+	</ui:define>
+
+
+	<ui:define name="datos 3">
+		<div align="center">
+
+			<h:form id="formularioResultadosProdutos">
+
+				<p:panel id="panel" header="TABLA DE PRODUCTOS"
+					style="margin-bottom:5px">
+
+					<h:panelGrid id="detalleUsuario" columns="2" cellpadding="5">
+						<f:facet name="header">
+						Seleccione el producto que desea actualizar
+						</f:facet>
+						<p:dataTable var="producto"
+							value="#{productoController.listaProductos}" rows="5"
+							paginator="true"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5" id="tablaResultadoProductos"
+							selectionMode="single" selection="#{productoController.producto}"
+							rowKey="#{producto.ideproducto}">
+
+							<p:ajax event="rowSelect"
+								update=":formularioDetallePruducto:detalleProducto" />
+
+
+							<p:column headerText="Código">
+								<h:outputText value="#{producto.ideproducto}" />
+							</p:column>
+
+
+							<p:column headerText="Descripcion">
+								<h:outputText value="#{producto.desproducto}" />
+							</p:column>
+
+							<p:column headerText="Cantidad">
+								<h:outputText value="#{producto.cantidad}" />
+							</p:column>
+
+							<p:column headerText="Valor">
+								<h:outputText value="#{producto.valor}" />
+							</p:column>
+
+							<p:column headerText="Ubicacion">
+								<h:outputText value="#{producto.ubicacion}" />
+							</p:column>
+
+							<p:column headerText="Estado">
+								<h:outputText value="#{producto.estado}" />
+							</p:column>
+
+							<p:column headerText="Proveedor">
+								<h:outputText value="#{producto.proveedor.nombre}" />
+							</p:column>
+
+						</p:dataTable>
+					</h:panelGrid>
+				</p:panel>
+
+			</h:form>
+
+		</div>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

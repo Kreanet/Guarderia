@@ -1,0 +1,90 @@
+.container {
+	width: 100%;
+	max-width: 100%;
+	min-width: 70%;
+	background-color: #FFF;
+	margin: 0 auto;
+}
+
+.menuhorizonte {
+	float: left;
+	height: 60px;
+	width: 85%;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	background: #F2F2F2;
+}
+
+.menulateral {
+	float: left;
+	height: 160%;
+	width: 200px;
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background: #F2F2F2;
+}
+
+.cajon1 {
+	float: left;
+	height: 50px;
+	width: 1000px;
+	margin: 5px;
+	background: #FFFFFF;
+}
+
+#cajon2 {
+	height: 430px;
+	width: 65%;
+	float: left;
+	background: #FFFFFF;
+	margin: 5px;
+}
+
+#cajon3 {
+	height: 300px;
+	width: 50%;
+	float: left;
+	background: #FFFFFF;
+	margin: 5px;
+}
+
+#cajon4 {
+	clear: both;
+	background: #FFFFFF;
+	height: 50px;
+	width: 1100px;
+	margin: 5px;
+}
+
+.sidebar1 {
+	float: left;
+	height: 300px;
+	width: 140px;
+	padding-bottom: 10px;
+	margin: 5px;
+}
+
+.logo {
+	float: left;
+	height: 60px;
+	width: 180px;
+
+	background: #F2F2F2;
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-right: 0px;
+	margin-down: 0px;
+}
+
+.header {
+	background-color: #F2F2F2;
+}
+.footer{
+	clear: both;
+	background:#F2F2F2;
+	height: 50px;
+	width: 100%;
+	margin:5px;
+}

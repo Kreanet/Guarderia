@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>....:::: Inicio ::::....</title>
+</head>
+
+<ui:composition template="template.xhtml">
+<ui:define name="datos 2">
+Ingrese el texto acá.
+</ui:define>
+	<h:head>
+		<h:outputStylesheet name="estilos.css" library="css"></h:outputStylesheet>
+	</h:head>
+	<h:body>
+		<div id="Encabezado" align="left">
+			<br />
+			<table>
+				<tr>
+					<td><p:graphicImage value="/images/logo.png" /></td>
+				</tr>
+			</table>
+
+		</div>
+		<div id="cajon1" align="center">
+			<ui:insert name="datos 1"> Menu Aplicacion</ui:insert>
+		</div>
+		<div id="cajon2" align="center">
+			<ui:insert name="datos 2"> Detalle 1</ui:insert>
+		</div>
+		<div id="cajon3" align="center">
+			<ui:insert name="datos 3"> Detalle 2</ui:insert>
+		</div>
+		<div id="PiePagina" align="center">
+			<h2 align="center">
+				<br />UNIVERSIDAD REMINGTON - 2014
+			</h2>
+		</div>
+
+
+	</h:body>
+</ui:composition>
+</html>

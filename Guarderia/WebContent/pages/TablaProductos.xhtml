@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>....:::: Productos ::::....</title>
+</h:head>
+<ui:composition template="template.xhtml">
+
+
+
+	<ui:define name="datos 2">
+	
+	<div align="center">
+		<h:form id="formularioResultadoProducto">
+
+			<p:panel id="panel" header="TABLA DE PRODUCTOS"
+				style="margin-bottom:5px">
+
+				<p:panelGrid columns="7" cellpadding="5">
+					<p:dataTable var="producto"
+						value="#{productoController.listaProductos}" rows="5"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5" id="tablaResultadoProductos"
+						style="font-size:14px;" selectionMode="single"
+						selection="#{productoController.producto}"
+						rowKey="#{producto.ideproducto}">
+
+						<p:ajax event="rowSelect" />
+
+						<p:column headerText="Codigo">
+							<h:outputText value="#{producto.ideproducto}" />
+						</p:column>
+
+						<p:column headerText="Descripcion">
+							<h:outputText value="#{producto.desproducto}" />
+						</p:column>
+
+						<p:column headerText="Cantidad">
+							<h:outputText value="#{producto.cantidad}" />
+						</p:column>
+
+
+						<p:column headerText="Valor ">
+							<h:outputText value="#{producto.valor}" />
+						</p:column>
+
+
+						<p:column headerText="Ubicacion">
+							<h:outputText value="#{producto.ubicacion}" />
+						</p:column>
+
+						<p:column headerText="Estado">
+							<h:outputText value="#{producto.estado}" />
+						</p:column>
+
+						<p:column headerText="Proveedor">
+							<h:outputText value="#{producto.proveedor.nombre}" />
+						</p:column>
+
+						<p:column headerText="Eliminar">
+							<h:commandButton value="Eliminar"
+								actionListener="#{productoController.eliminarProducto}">
+								<f:attribute name="ideproducto" value="#{producto.ideproducto}" />
+							</h:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+		</div>
+	</ui:define>
+
+
+	<ui:define name="datos 3">
+		<h:form id="formularioDetalleProducto">
+
+			<p:panel id="panel" header="REGISTRO DE NUEVOS PRODUCTOS "
+				style="margin-bottom:20px">
+
+				<p:growl id="messages" showDetail="true" autoUpdate="false"
+					closable="true" />
+
+				<h:panelGrid id="detalleProducto" columns="2" cellpadding="5">
+					<h:outputLabel value="Codigo" />
+					<p:inputText id="codigo" type="hidden"
+						value="#{productoController.producto.ideproducto}" required="true"
+						requiredMessage="El codigo del producto es requerido" />
+
+					<h:outputLabel value="Nombre" />
+					<p:inputText id="nombre"
+						value="#{productoController.producto.desproducto}" required="true"
+						requiredMessage="El nombre del producto es requerido" />
+					<h:outputLabel value="Cantidad" />
+					<p:inputText id="cantidad"
+						value="#{productoController.producto.cantidad}" required="true"
+						requiredMessage="la cantidad del producto es requerida" />
+
+					<h:outputLabel value="Valor" />
+					<p:inputText id="valor"
+						value="#{productoController.producto.valor}" required="true"
+						requiredMessage="el valor del producto es requerido" />
+
+					<h:outputLabel value="Ubicacion" />
+					<p:inputText id="Ubicacion"
+						value="#{productoController.producto.ubicacion}" required="true"
+						requiredMessage="La ubicacion del producto es requerida" />
+
+					<h:outputLabel value="Estado" />
+					<h:selectOneMenu id="estado"
+						value="#{productoController.producto.estado}" required="true"
+						label="Estado">
+						<f:selectItem itemLabel="Seleccione.." itemValue=""
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Activo" itemValue="1" />
+						<f:selectItem itemLabel="Inactivo" itemValue="2" />
+					</h:selectOneMenu>
+
+
+					<h:outputLabel value="Proveedor" />
+					<p:selectOneMenu value="#{productoController.proveedor.nit}"
+						title="Seleccione un proveedor" id="selProveedor"
+						label="Proveedor">
+
+						<f:selectItems value="#{productoController.listaProveedor}"
+							var="proveedor"
+							itemLabel="#{proveedor.nit} -  #{proveedor.nombre}"
+							itemValue="#{proveedor.nit}">
+						</f:selectItems>
+					</p:selectOneMenu>
+
+					<center>
+						<h:commandButton value="Insertar"
+							actionListener="#{productoController.guardarProducto}">
+						</h:commandButton>
+					</center>
+
+				</h:panelGrid>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>
